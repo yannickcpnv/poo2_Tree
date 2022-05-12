@@ -10,5 +10,5 @@ class WordSearchTree:
     def add(self, word: str) -> None:
         self.root.add(word)
 
-    def search(self, word: str) -> bool:
+    def exists(self, word: str) -> bool:
         return self.root.search(word)

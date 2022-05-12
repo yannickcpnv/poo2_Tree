@@ -10,4 +10,4 @@ while True:
     word = input('Enter a word to search for: ')
     if word == 'tatsugeki':
         break
-    print('Found!') if tree.search(word) else print('Not found!')
+    print('Found!') if tree.exists(word) else print('Not found!')
