@@ -3,11 +3,12 @@ from structure.Node import Node
 
 class WordSearchTree:
     root: Node
-    words: list[str]
 
     def __init__(self):
-        self.root = Node('value')
-        self.words = []
+        self.root = Node()
 
-    def add(self, word):
-        self.words.append(word)
+    def add(self, word: str) -> None:
+        self.root.add(word)
+
+    def search(self, word: str) -> bool:
+        return self.root.search(word)
