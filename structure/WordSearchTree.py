@@ -11,4 +11,4 @@ class WordSearchTree:
         self.root.add(word)
 
     def exists(self, word: str) -> bool:
-        return self.root.search(word)
+        return self.root.search(word.lower())

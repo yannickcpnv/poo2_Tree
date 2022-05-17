@@ -6,7 +6,7 @@ class Node:
     is_word: bool
 
     def __init__(self):
-        self.children = list(None for _ in range(26))
+        self.children = [None] * 26
         self.is_word = False
 
     def add(self, word: str) -> None:
@@ -14,10 +14,11 @@ class Node:
             self.is_word = True
             return
 
-        if self.children[ord(word[0]) - ord('a')] is None:
-            self.children[ord(word[0]) - ord('a')] = Node()
+        char_index = ord(word[0]) - ord('a')
+        if self.children[self.__alpha_pos(word[0])] is None:
+            self.children[char_index] = Node()
 
-        next_node = self.children[ord(word[0]) - ord('a')]
+        next_node = self.children[char_index]
         cut_word = word[1:]
         next_node.add(cut_word)
 
@@ -25,10 +26,14 @@ class Node:
         if word == '':
             return self.is_word
 
-        if self.children[ord(word[0]) - ord('a')] is None:
+        if self.children[self.__alpha_pos(word[0])] is None:
             return False
 
-        next_node = self.children[ord(word[0]) - ord('a')]
+        next_node = self.children[self.__alpha_pos(word[0])]
         cut_word = word[1:]
 
         return next_node.search(cut_word)
+
+    @staticmethod
+    def __alpha_pos(char: str) -> int:
+        return ord(char) - ord('a')

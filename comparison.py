@@ -1,5 +1,12 @@
-from structure.WordSearchTree import WordSearchTree
 from line_profiler_pycharm import profile
+
+from structure.WordSearchTree import WordSearchTree
+
+
+@profile
+def benchmark():
+    search_array()
+    search_tree()
 
 
 def search_tree():
@@ -8,12 +15,6 @@ def search_tree():
 
 def search_array():
     return word in array
-
-
-@profile
-def benchmark():
-    search_array()
-    search_tree()
 
 
 tree = WordSearchTree()
